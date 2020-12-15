@@ -15,20 +15,25 @@ graph = [
 ]
 
 visited = [False] * 9
+queue = deque()
 
 def bfs(graph, start, visited):
-    queue = deque([start])
+    queue.append(start)
     visited[start] = True
     while queue:
-
         cur = queue.popleft()
         print(cur, end = ' ')
-
         for i in graph[cur]:
             if(not visited[i]):
-                queue.append(i)
                 visited[i] = True
-        
+                queue.append(i)
+
 bfs(graph, 1, visited)
+
+
+
+
+
+
 
 

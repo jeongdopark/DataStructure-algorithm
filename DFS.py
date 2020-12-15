@@ -1,6 +1,7 @@
 
 # DFS는 Depth-First Search, 깊이 우선 탐색이라고도 부르며, 그래프에서 깊은 부분을 우선적으로 탐색하는 알고리즘이다.
 
+from collections import deque
 
 graph = [
     [],
@@ -16,11 +17,14 @@ graph = [
 
 visited = [False] * 9
 
-def dfs(graph, v, visited):
+def dfs(v):
     visited[v] = True
-    print(v, end = ' ')
+    print(v, end =' ')
     for i in graph[v]:
         if(not visited[i]):
-            dfs(graph, i, visited)
+            dfs(i)        
+dfs(1)
+            
+    
 
-dfs(graph, 1, visited)
+        
