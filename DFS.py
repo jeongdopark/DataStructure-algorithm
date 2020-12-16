@@ -17,14 +17,15 @@ graph = [
 
 visited = [False] * 9
 
-def dfs(v):
+def dfs(graph, v, visited):
     visited[v] = True
-    print(v, end =' ')
+    print(v, end = ' ')
     for i in graph[v]:
         if(not visited[i]):
-            dfs(i)        
-dfs(1)
-            
+            dfs(graph, i, visited)
+
+
+dfs(graph, 1, visited)
     
 
         
