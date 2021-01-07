@@ -19,4 +19,13 @@
 n = int(input())
 num = list(int(input()) for _ in range(n))
 
-mm = 
+mm = [0] * 10001
+mm[1] = num[0]
+
+if(n > 1):
+    mm[2] = num[0] + num[1]
+
+for i in range(3, n+1):
+    mm[i] = max(mm[i-3] + num[i-2] + num[i-1], mm[i-2] + num[i-1], mm[i-1])
+
+print(mm[n])

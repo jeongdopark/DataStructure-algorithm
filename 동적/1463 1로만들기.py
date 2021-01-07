@@ -3,7 +3,7 @@
 
 
 n = int(input())
-mm = [0] * 11
+mm = [0] * 1000001
 mm[1] = 0
 mm[2] = 1
 mm[3] = 1
@@ -17,4 +17,3 @@ if(n >= 4):
             mm[i] = mm[i//3]+ 1
 
 print(mm[n])
-print(mm)
