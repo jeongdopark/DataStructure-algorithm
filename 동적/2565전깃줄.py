@@ -15,6 +15,7 @@ num = sorted(num, key = lambda x : x[0])
 ans = 0
 mm = [0] * (n+1)
 mm[1] = 1
+
 for i in range(1, n):
     max = 0
     for j in range(i):
