@@ -1,33 +1,38 @@
+# 7
+# 6
+# 1 2
+# 2 3
+# 1 5
+# 5 2
+# 5 6
+# 4 7
 
 
+from collections import deque
 
-a, b = map(int, input().split())
-num = []
-for _ in range(a):
-    num.append(int(input()))
+com = int(input())
+line = int(input())
 
-num.sort()
+graph = [[0] * (com + 1) for _ in range(com + 1)]
+visited = [False] * (com+1)
+for i in range(line):
+    a, b = map(int, input().split())
+    graph[a][b] = 1
+    graph[b][a] = 1
 
-def count(n):
-    cnt = 1
-    flag = num[0]
-    for i in range(1, a):
-        if(flag + n <= num[i]):
-            flag = num[i]
-            cnt += 1
+
+def BFS(start):
+    cnt = -1
+    queue = deque()
+    queue.append(start)
+    visited[start] = True
+    while queue:
+        add = queue.popleft()
+        cnt += 1
+        for i in range(1, com+1):
+            if(graph[add][i] == 1 and visited[i] == False):
+                queue.append(i)
+                visited[i] = True
     return cnt
 
-
-
-lt = num[0]
-rt = num[-1]
-ans = 0
-while lt <= rt:
-    mid = (lt + rt) // 2
-    if(count(mid) < b):
-        rt = mid - 1
-    else:
-        ans = mid
-        lt = mid + 1
-
-print(ans)
+print(BFS(1))
