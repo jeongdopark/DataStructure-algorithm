@@ -1,38 +1,30 @@
-# 7
-# 6
-# 1 2
-# 2 3
-# 1 5
-# 5 2
-# 5 6
-# 4 7
-
 
 from collections import deque
 
-com = int(input())
-line = int(input())
+graph = [
+    [],
+    [2, 3, 8],
+    [1, 7],
+    [1, 4, 5],
+    [3, 5],
+    [3, 4],
+    [7],
+    [2, 6, 8],
+    [1, 7]
+]
 
-graph = [[0] * (com + 1) for _ in range(com + 1)]
-visited = [False] * (com+1)
-for i in range(line):
-    a, b = map(int, input().split())
-    graph[a][b] = 1
-    graph[b][a] = 1
+visited = [False] * 9
 
-
-def BFS(start):
-    cnt = -1
-    queue = deque()
-    queue.append(start)
-    visited[start] = True
-    while queue:
-        add = queue.popleft()
-        cnt += 1
-        for i in range(1, com+1):
-            if(graph[add][i] == 1 and visited[i] == False):
-                queue.append(i)
+def bfs(graph, v, visited):
+    test = deque()
+    test.append(v)
+    visited[v] = True
+    while test:
+        num = test.popleft()
+        print(num, end = ' ')
+        for i in graph[num]:
+            if(visited[i] == False):
+                test.append(i)
                 visited[i] = True
-    return cnt
-
-print(BFS(1))
+            
+bfs(graph, 1, visited)
