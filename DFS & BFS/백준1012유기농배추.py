@@ -36,3 +36,35 @@ for i in range(t):
     
 
 
+# dfs 풀이
+
+
+# case = int(input())
+
+# def dfs(x, y):
+#     if(0 <= x < m and 0 <= y < n and graph[x][y] == 1):
+#         graph[x][y] = 0
+#         dfs(x+1, y)
+#         dfs(x-1, y)
+#         dfs(x, y+1)
+#         dfs(x, y-1)
+#         return True
+#     else:
+#         return False
+
+# for _ in range(case):
+#     count = 0
+#     n, m, num = map(int, input().split())
+#     graph = [[0] * n for _ in range(m)]
+    
+#     for _ in range(num):
+#         a, b = map(int, input().split())
+#         graph[b][a] = 1
+    
+#     for i in range(m):
+#         for j in range(n):
+#             if(graph[i][j] == 1):
+#                 dfs(i, j)
+#                 count += 1
+#     print(count)
+
